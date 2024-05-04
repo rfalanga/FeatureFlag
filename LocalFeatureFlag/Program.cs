@@ -1,3 +1,6 @@
+using LocalFeatureFlag.Models;
+using Microsoft.FeatureManagement;
+
 namespace LocalFeatureFlag
 {
     public class Program
@@ -8,6 +11,9 @@ namespace LocalFeatureFlag
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Following along from here: https://github.com/microsoft/FeatureManagement-Dotnet?tab=readme-ov-file#custom-feature-providers
+            builder.Services.AddSingleton<IFeatureDefinitionProvider, MyFeatureFlags>().AddFeatureManagement();
 
             var app = builder.Build();
 
