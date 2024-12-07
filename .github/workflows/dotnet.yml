@@ -25,11 +25,11 @@ jobs:
       with:
         dotnet-version: 8.0.x
 
-    - name: Restore dependencies    # This isn't in the example, I hope it will work
-      run: dotnet restore
+    # - name: Restore dependencies    # This isn't in the example, I hope it will work
+    #   run: dotnet restore
 
     - name: Build
-      run: dotnet build FeatureFlag/FeatureFlag.sln --output buildOutput
+      run: dotnet build FeatureFlag.sln --output buildOutput
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
