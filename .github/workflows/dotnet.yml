@@ -3,11 +3,15 @@
 
 name: .NET Core
 
+# I'm trying to generate SBOMs following this example: https://github.com/microsoft/sbom-tool/blob/main/docs/setting-up-github-actions.md
+
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  # push:               # this is for automated builds
+  #   branches: [ "main" ]
+  # pull_request:
+  #   branches: [ "main" ]
+  workflow_dispatch:    # this is for manual builds
+  
 
 jobs:
   build:
@@ -20,9 +24,16 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
+
+    - name: Restore dependencies    # This isn't in the example, I hope it will work
       run: dotnet restore
+
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build FeatureFlag.sln --output buildOutput
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.0
+      with:
+        name: buildOutput
     #- name: Test    # I have no unit tests
     #  run: dotnet test --no-build --verbosity normal
