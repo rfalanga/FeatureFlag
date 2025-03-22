@@ -32,7 +32,7 @@ jobs:
       run: dotnet build FeatureFlag.sln --output buildOutput
 
     - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@v4.6.2
       with:
         name: buildOutput
         path: buildOutput
@@ -47,7 +47,7 @@ jobs:
         ./sbom-tool-linux-x64 generate -b buildOutput -bc . -pn FeatureFlag -pv 1.0.0 -ps FeatureFlag -nsb
 
     - name: Upload SBOM Artifact
-      uses: actions/upload-artifact@v3.1.0
+      uses: actions/upload-artifact@4.6.2
       with:
         name: sbom
         path: _manifest
