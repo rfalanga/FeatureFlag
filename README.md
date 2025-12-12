@@ -1,5 +1,5 @@
 # FeatureFlag
-With this repo I intend to demonstrate saving feature flags in local storage.
+With this repo I intend to demonstrate saving feature flags in local storage. This is an ASP.NET MVC app.
 
 ## Using the latest stable versions
 I had originally decided to use the preview version of some packages, such as Microsoft.FeatureManagement. However, I have decided to use the latest stable versions of the packages.
